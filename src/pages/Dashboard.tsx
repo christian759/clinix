@@ -1,6 +1,5 @@
 import React from 'react';
 import { useAuth } from '../context/AuthContext';
-import { Activity, Calendar, Users, FileText, Settings, LogOut, Bell, Search } from 'lucide-react';
 
 const Dashboard = () => {
     const { user, logout } = useAuth();
@@ -15,29 +14,29 @@ const Dashboard = () => {
                 <div className="flex flex-col flex-1 overflow-y-auto">
                     <nav className="flex-1 px-4 py-4 space-y-2">
                         <a href="#" className="flex items-center px-4 py-3 text-gray-700 bg-gray-100 rounded-xl transition-colors">
-                            <Activity className="h-5 w-5 mr-3 text-blue-600" />
+                            <span className="mr-3 font-bold text-blue-600">II</span>
                             Overview
                         </a>
                         <a href="#" className="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-xl transition-colors">
-                            <Calendar className="h-5 w-5 mr-3" />
+                            <span className="mr-3">📅</span>
                             Appointments
                         </a>
                         <a href="#" className="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-xl transition-colors">
-                            <FileText className="h-5 w-5 mr-3" />
+                            <span className="mr-3">📄</span>
                             Records
                         </a>
                         <a href="#" className="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-xl transition-colors">
-                            <Users className="h-5 w-5 mr-3" />
+                            <span className="mr-3">👥</span>
                             Doctors
                         </a>
                         <a href="#" className="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-xl transition-colors">
-                            <Settings className="h-5 w-5 mr-3" />
+                            <span className="mr-3">⚙️</span>
                             Settings
                         </a>
                     </nav>
                     <div className="p-4 border-t border-gray-200">
                         <button onClick={logout} className="flex items-center w-full px-4 py-2 text-gray-600 hover:text-red-600 transition-colors">
-                            <LogOut className="h-5 w-5 mr-3" />
+                            <span className="mr-3">🚪</span>
                             Logout
                         </button>
                     </div>
@@ -50,20 +49,18 @@ const Dashboard = () => {
                 <header className="flex items-center justify-between px-6 py-4 bg-white border-b border-gray-200">
                     <div className="flex items-center">
                         <button className="md:hidden text-gray-500 focus:outline-none focus:text-gray-700">
-                            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-                            </svg>
+                            <span className="text-xl">☰</span>
                         </button>
                         <div className="relative mx-4 lg:mx-0">
                             <span className="absolute inset-y-0 left-0 pl-3 flex items-center">
-                                <Search className="h-5 w-5 text-gray-400" />
+                                <span className="text-gray-400">🔍</span>
                             </span>
                             <input className="form-input w-32 sm:w-64 rounded-xl pl-10 pr-4 py-2 border border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition-shadow" type="text" placeholder="Search..." />
                         </div>
                     </div>
                     <div className="flex items-center">
                         <button className="flex mx-4 text-gray-600 focus:outline-none">
-                            <Bell className="h-6 w-6" />
+                            <span className="text-xl">🔔</span>
                         </button>
                         <div className="flex items-center">
                             <div className="h-8 w-8 rounded-full bg-blue-500 flex items-center justify-center text-white font-bold">
@@ -81,7 +78,7 @@ const Dashboard = () => {
                         <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
                             <div className="flex items-center justify-between mb-4">
                                 <h3 className="text-gray-500 text-sm font-medium">Next Appointment</h3>
-                                <Calendar className="h-5 w-5 text-blue-500" />
+                                <span className="text-blue-500">📅</span>
                             </div>
                             <div className="flex items-baseline">
                                 <p className="text-2xl font-bold text-gray-900">Oct 24</p>
@@ -92,7 +89,7 @@ const Dashboard = () => {
                         <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
                             <div className="flex items-center justify-between mb-4">
                                 <h3 className="text-gray-500 text-sm font-medium">Test Results</h3>
-                                <Activity className="h-5 w-5 text-purple-500" />
+                                <span className="text-purple-500">🧪</span>
                             </div>
                             <div className="flex items-baseline">
                                 <p className="text-2xl font-bold text-gray-900">3 New</p>
@@ -102,7 +99,7 @@ const Dashboard = () => {
                         <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
                             <div className="flex items-center justify-between mb-4">
                                 <h3 className="text-gray-500 text-sm font-medium">Prescriptions</h3>
-                                <FileText className="h-5 w-5 text-green-500" />
+                                <span className="text-green-500">💊</span>
                             </div>
                             <div className="flex items-baseline">
                                 <p className="text-2xl font-bold text-gray-900">2 Active</p>
@@ -112,7 +109,7 @@ const Dashboard = () => {
                         <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
                             <div className="flex items-center justify-between mb-4">
                                 <h3 className="text-gray-500 text-sm font-medium">Messages</h3>
-                                <Bell className="h-5 w-5 text-yellow-500" />
+                                <span className="text-yellow-500">💬</span>
                             </div>
                             <div className="flex items-baseline">
                                 <p className="text-2xl font-bold text-gray-900">1 Unread</p>
@@ -128,7 +125,7 @@ const Dashboard = () => {
                                 {[1, 2, 3].map((i) => (
                                     <div key={i} className="flex items-start pb-4 border-b border-gray-50 last:border-0 last:pb-0">
                                         <div className="h-10 w-10 rounded-full bg-blue-50 flex items-center justify-center mr-4">
-                                            <Activity className="h-5 w-5 text-blue-600" />
+                                            <span className="text-blue-600 font-bold">A</span>
                                         </div>
                                         <div>
                                             <p className="text-sm font-medium text-gray-900">General Checkup</p>
