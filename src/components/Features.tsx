@@ -1,78 +1,86 @@
-import { motion } from 'framer-motion';
+import { useState } from 'react';
 
 const Features = () => {
     return (
         <section className="py-24 bg-white relative overflow-hidden">
             <div className="max-w-[1400px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
-                {/* Left: The Green Machine Box */}
-                <div className="relative">
-                    <div className="bg-primary-50 rounded-[3rem] p-12 relative overflow-hidden h-[600px] flex items-center justify-center">
-                        {/* Abstract Rings */}
-                        <div className="absolute inset-0 border-[40px] border-white/30 rounded-full scale-150 opacity-50"></div>
-
-                        {/* Machine Image */}
+                {/* Left: Machine + Square Cards */}
+                <div className="flex flex-col gap-6">
+                    {/* Main Machine Card */}
+                    <div className="bg-[#D1FAE5] rounded-[3rem] p-12 relative overflow-hidden h-[500px] flex items-center justify-center">
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/40 via-transparent to-transparent"></div>
                         <img
                             src="https://images.unsplash.com/photo-1516549655169-df83a06745ed?auto=format&fit=crop&w=800&q=80"
-                            alt="Advanced Medical Device"
-                            className="relative z-10 w-[80%] drop-shadow-2xl"
+                            alt="Medical Machine"
+                            className="relative z-10 w-[80%] drop-shadow-2xl mix-blend-multiply"
                         />
+                    </div>
+
+                    {/* Bottom Row Cards */}
+                    <div className="grid grid-cols-2 gap-6">
+                        {/* 5 Years Card (White) */}
+                        <div className="bg-slate-50 rounded-[2rem] p-8 flex flex-col justify-between h-[200px] relative overflow-hidden group hover:bg-white hover:shadow-xl transition-all">
+                            <div className="absolute top-6 right-6 w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center text-slate-400 group-hover:bg-dark group-hover:text-white group-hover:border-dark transition-all">↗</div>
+                            <div className="mt-auto">
+                                <h3 className="text-3xl font-bold text-dark font-display">5 Years</h3>
+                                <p className="text-slate-500 text-sm mt-1">Product Warranty</p>
+                            </div>
+                        </div>
+
+                        {/* Top 20 Card (Black) */}
+                        <div className="bg-dark rounded-[2rem] p-8 flex flex-col justify-between h-[200px] relative overflow-hidden group hover:shadow-2xl shadow-dark/30">
+                            <div className="absolute top-6 right-6 w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white">↗</div>
+                            <div className="mt-auto">
+                                <h3 className="text-3xl font-bold text-white font-display">Top 20</h3>
+                                <p className="text-slate-400 text-sm mt-1">Medical Startups</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                {/* Right: Content & Dashboard Cards */}
-                <div>
-                    <span className="text-slate-400 font-semibold text-sm uppercase tracking-wider mb-2 block">Specialized Care</span>
-                    <h2 className="text-4xl md:text-5xl font-bold font-display text-dark mb-12">
+                {/* Right: Text Content */}
+                <div className="pl-0 lg:pl-12">
+                    <span className="text-slate-400 font-bold text-xs uppercase tracking-widest mb-4 block">Specialized Care</span>
+                    <h2 className="text-5xl font-bold font-display text-dark mb-6 leading-tight">
                         Connect and Share with a<br />
                         Supportive Community.
                     </h2>
 
-                    <div className="space-y-6">
-                        {/* Card 1 */}
-                        <div className="bg-white border border-slate-100 rounded-3xl p-6 shadow-soft flex items-center justify-between group hover:border-primary-200 transition-colors">
+                    {/* Dashboard Preview Cards */}
+                    <div className="mt-12 space-y-4">
+                        <div className="bg-white border border-slate-100 rounded-3xl p-6 shadow-soft hover:shadow-lg transition-all cursor-pointer flex items-center justify-between">
                             <div>
-                                <div className="flex items-center gap-2 mb-1">
-                                    <span className="text-xs font-bold text-slate-400 uppercase">Analysis</span>
-                                    <span className="w-1.5 h-1.5 rounded-full bg-primary-500"></span>
-                                </div>
-                                <h3 className="text-lg font-bold text-dark">Patient Dashboard</h3>
-                                <div className="mt-2 text-3xl font-bold text-dark font-display">
-                                    +75% <span className="text-sm font-normal text-slate-400">Recovery Rate</span>
+                                <span className="text-xs font-bold text-slate-400 uppercase tracking-wide">Analysis</span>
+                                <h4 className="text-lg font-bold text-dark mt-1">Finara Dashboard</h4>
+                                <div className="flex items-center gap-2 mt-2">
+                                    <span className="text-2xl font-bold text-dark">+75%</span>
+                                    <span className="text-xs text-slate-400">Week-over-week</span>
                                 </div>
                             </div>
-                            <button className="w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center group-hover:bg-primary-500 group-hover:text-white group-hover:border-primary-500 transition-all">
-                                ↗
-                            </button>
+                            <button className="px-4 py-2 bg-primary-50 text-primary-700 text-xs font-bold rounded-full">View</button>
                         </div>
 
-                        {/* Card 2 */}
-                        <div className="bg-white border border-slate-100 rounded-3xl p-6 shadow-soft flex items-center justify-between group hover:border-primary-200 transition-colors">
+                        <div className="bg-white border border-slate-100 rounded-3xl p-6 shadow-soft hover:shadow-lg transition-all cursor-pointer flex items-center justify-between opacity-80 hover:opacity-100">
                             <div>
-                                <div className="flex items-center gap-2 mb-1">
-                                    <span className="text-xs font-bold text-slate-400 uppercase">Growth</span>
-                                </div>
-                                <div className="flex items-center gap-4">
-                                    <h3 className="text-lg font-bold text-dark">Health Score</h3>
-                                    <span className="px-3 py-1 bg-primary-50 text-primary-700 text-xs font-bold rounded-full">Active</span>
-                                </div>
+                                <span className="text-xs font-bold text-slate-400 uppercase tracking-wide">Growth</span>
+                                <h4 className="text-lg font-bold text-dark mt-1">User Activity</h4>
                             </div>
-                            <button className="w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center group-hover:bg-primary-500 group-hover:text-white group-hover:border-primary-500 transition-all">
-                                ↗
-                            </button>
+                            <button className="px-4 py-2 bg-slate-50 text-slate-600 text-xs font-bold rounded-full">Details</button>
                         </div>
                     </div>
                 </div>
             </div>
 
-            {/* Company Logos Strip using simple text/icons for now */}
-            <div className="max-w-[1400px] mx-auto px-6 mt-24 pt-12 border-t border-slate-50 text-center">
-                <p className="text-slate-400 text-sm font-semibold mb-8">Trusted by 200+ Companies</p>
-                <div className="flex flex-wrap justify-center gap-12 opacity-40 grayscale">
-                    <h3 className="text-2xl font-bold font-display">Goodwell</h3>
-                    <h3 className="text-2xl font-bold font-display">FocalPoint</h3>
-                    <h3 className="text-2xl font-bold font-display">ScreenTime</h3>
-                    <h3 className="text-2xl font-bold font-display">Segment</h3>
+            {/* Logos */}
+            <div className="max-w-[1400px] mx-auto px-6 mt-32">
+                <p className="text-center text-sm font-bold text-slate-400 mb-10">Trusted by 200+ Companies</p>
+                <div className="flex flex-wrap justify-between items-center opacity-30 grayscale gap-8 px-12">
+                    <span className="text-2xl font-bold font-display">Goodwell</span>
+                    <span className="text-2xl font-bold font-display">FocalPoint</span>
+                    <span className="text-2xl font-bold font-display">ScreenTime</span>
+                    <span className="text-2xl font-bold font-display">Segment</span>
+                    <span className="text-2xl font-bold font-display">Kyealta</span>
                 </div>
             </div>
         </section>

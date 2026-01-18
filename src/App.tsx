@@ -1,34 +1,23 @@
-import Hero from './components/Hero'
-import Services from './components/Services'
-import Technology from './components/Technology'
-import Doctors from './components/Doctors'
-import Testimonials from './components/Testimonials'
-import Blog from './components/Blog'
-import Booking from './components/Booking'
-import FAQ from './components/FAQ'
-import CTA from './components/CTA'
-import Footer from './components/Footer'
-import Navigation from './components/Navigation'
-import { GlobalLighting } from './components/GlobalLighting'
-import './App.css'
+import Navigation from './components/Navigation';
+import Hero from './components/Hero';
+import Services from './components/Services';
+import Features from './components/Features';
+import Testimonials from './components/Testimonials';
+import Booking from './components/Booking';
+import Footer from './components/Footer';
 
 function App() {
   return (
-    <div className="app relative">
-      <GlobalLighting />
+    <div className="min-h-screen bg-white">
       <Navigation />
       <Hero />
       <Services />
-      <Technology />
-      <Doctors />
+      <Features />
       <Testimonials />
-      <Blog />
       <Booking />
-      <FAQ />
-      <CTA />
       <Footer />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
