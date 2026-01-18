@@ -1,30 +1,30 @@
 const Booking = () => {
     return (
-        <section id="booking" className="py-24 relative overflow-hidden">
-            <div className="max-w-4xl mx-auto px-6 relative z-10">
-                <div className="bg-white/80 backdrop-blur-xl rounded-[2.5rem] p-8 md:p-12 shadow-2xl border border-white/50">
+        <section id="booking" className="py-32 bg-slate-50 border-t border-slate-100">
+            <div className="max-w-4xl mx-auto px-6">
+                <div className="bg-white rounded-2xl p-12 shadow-swiss border border-slate-100">
                     <div className="text-center mb-12">
-                        <span className="text-indigo-600 font-semibold tracking-wider uppercase text-sm">Appointments</span>
-                        <h2 className="text-4xl font-bold text-slate-900 mt-2">Book Your Visit</h2>
-                        <p className="text-slate-500 mt-4">Schedule a consultation with our specialists.</p>
+                        <span className="text-primary font-bold tracking-widest uppercase text-xs">Appointments</span>
+                        <h2 className="text-4xl font-bold font-display text-slate-900 mt-4">Schedule Consultation</h2>
+                        <p className="text-slate-500 mt-4">Expert care, available at your convenience.</p>
                     </div>
 
                     <form className="space-y-6">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div className="space-y-2">
-                                <label className="text-sm font-semibold text-slate-700">Full Name</label>
-                                <input type="text" className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 outline-none transition-all" placeholder="John Doe" />
+                                <label className="text-sm font-bold text-slate-900 uppercase tracking-wide">Full Name</label>
+                                <input type="text" className="w-full px-4 py-4 rounded-lg bg-slate-50 border border-slate-200 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-medium" placeholder="John Doe" />
                             </div>
                             <div className="space-y-2">
-                                <label className="text-sm font-semibold text-slate-700">Email Address</label>
-                                <input type="email" className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 outline-none transition-all" placeholder="john@example.com" />
+                                <label className="text-sm font-bold text-slate-900 uppercase tracking-wide">Email</label>
+                                <input type="email" className="w-full px-4 py-4 rounded-lg bg-slate-50 border border-slate-200 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-medium" placeholder="john@example.com" />
                             </div>
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div className="space-y-2">
-                                <label className="text-sm font-semibold text-slate-700">Service Type</label>
-                                <select className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 outline-none transition-all text-slate-600">
+                                <label className="text-sm font-bold text-slate-900 uppercase tracking-wide">Service</label>
+                                <select className="w-full px-4 py-4 rounded-lg bg-slate-50 border border-slate-200 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-slate-600 font-medium">
                                     <option>General Consultation</option>
                                     <option>Cardiology</option>
                                     <option>Diagnostics</option>
@@ -33,18 +33,18 @@ const Booking = () => {
                                 </select>
                             </div>
                             <div className="space-y-2">
-                                <label className="text-sm font-semibold text-slate-700">Preferred Date</label>
-                                <input type="date" className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 outline-none transition-all text-slate-600" />
+                                <label className="text-sm font-bold text-slate-900 uppercase tracking-wide">Date</label>
+                                <input type="date" className="w-full px-4 py-4 rounded-lg bg-slate-50 border border-slate-200 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-slate-600 font-medium" />
                             </div>
                         </div>
 
                         <div className="space-y-2">
-                            <label className="text-sm font-semibold text-slate-700">Message (Optional)</label>
-                            <textarea className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 outline-none transition-all h-32 resize-none" placeholder="Tell us more about your symptoms..."></textarea>
+                            <label className="text-sm font-bold text-slate-900 uppercase tracking-wide">Message</label>
+                            <textarea className="w-full px-4 py-4 rounded-lg bg-slate-50 border border-slate-200 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all h-32 resize-none font-medium" placeholder="Describe your symptoms..."></textarea>
                         </div>
 
-                        <button className="w-full py-4 bg-slate-900 text-white rounded-xl font-bold text-lg hover:bg-indigo-600 transition-all shadow-xl shadow-slate-200 mt-4">
-                            Confirm Booking
+                        <button className="w-full py-4 bg-primary text-white rounded-lg font-bold text-lg hover:bg-primary-600 transition-colors shadow-swiss mt-6">
+                            Confirm Appointment
                         </button>
                     </form>
                 </div>
