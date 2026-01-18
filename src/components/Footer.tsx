@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const Footer = () => {
     return (
         <footer className="bg-dark text-white pt-24 pb-12 rounded-t-[3rem] mt-20">
@@ -30,26 +32,26 @@ const Footer = () => {
                     <div>
                         <h4 className="font-bold mb-6 text-sm uppercase tracking-wider text-slate-500">Product</h4>
                         <ul className="space-y-3 text-sm text-slate-300">
-                            <li><a href="#" className="hover:text-primary-400 transition-colors">Features</a></li>
-                            <li><a href="#" className="hover:text-primary-400 transition-colors">Integrations</a></li>
-                            <li><a href="#" className="hover:text-primary-400 transition-colors">Pricing</a></li>
+                            <li><Link to="/#features" className="hover:text-primary-400 transition-colors">Features</Link></li>
+                            <li><Link to="/integrations" className="hover:text-primary-400 transition-colors">Integrations</Link></li>
+                            <li><Link to="/pricing" className="hover:text-primary-400 transition-colors">Pricing</Link></li>
                         </ul>
                     </div>
 
                     <div>
                         <h4 className="font-bold mb-6 text-sm uppercase tracking-wider text-slate-500">Company</h4>
                         <ul className="space-y-3 text-sm text-slate-300">
-                            <li><a href="#" className="hover:text-primary-400 transition-colors">About Us</a></li>
-                            <li><a href="#" className="hover:text-primary-400 transition-colors">Careers</a></li>
-                            <li><a href="#" className="hover:text-primary-400 transition-colors">Contact</a></li>
+                            <li><Link to="/about" className="hover:text-primary-400 transition-colors">About Us</Link></li>
+                            <li><Link to="/careers" className="hover:text-primary-400 transition-colors">Careers</Link></li>
+                            <li><Link to="/contact" className="hover:text-primary-400 transition-colors">Contact</Link></li>
                         </ul>
                     </div>
 
                     <div>
                         <h4 className="font-bold mb-6 text-sm uppercase tracking-wider text-slate-500">Legal</h4>
                         <ul className="space-y-3 text-sm text-slate-300">
-                            <li><a href="#" className="hover:text-primary-400 transition-colors">Privacy</a></li>
-                            <li><a href="#" className="hover:text-primary-400 transition-colors">Terms</a></li>
+                            <li><Link to="/privacy" className="hover:text-primary-400 transition-colors">Privacy</Link></li>
+                            <li><Link to="/terms" className="hover:text-primary-400 transition-colors">Terms</Link></li>
                         </ul>
                     </div>
                 </div>

@@ -18,6 +18,9 @@ import Prescriptions from './pages/dashboard/Prescriptions';
 import Messages from './pages/dashboard/Messages';
 import Settings from './pages/dashboard/Settings';
 
+// Footer Pages
+import { About, Contact, Privacy, Terms, Careers, Pricing, Integrations } from './pages/FooterPages';
+
 
 function App() {
   return (
@@ -28,6 +31,15 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
+
+            {/* Footer Pages */}
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/terms" element={<Terms />} />
+            <Route path="/careers" element={<Careers />} />
+            <Route path="/pricing" element={<Pricing />} />
+            <Route path="/integrations" element={<Integrations />} />
 
             {/* Nested Dashboard Routes */}
             <Route path="/dashboard" element={
