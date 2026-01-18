@@ -1,7 +1,3 @@
-import { Canvas } from '@react-three/fiber'
-import { OrbitControls, PerspectiveCamera, Float, MeshDistortMaterial, Sphere } from '@react-three/drei'
-import { motion } from 'framer-motion'
-import { Suspense } from 'react'
 import Hero from './components/Hero'
 import Services from './components/Services'
 import Doctors from './components/Doctors'

@@ -1,24 +1,68 @@
-import { Canvas } from '@react-three/fiber';
-import { PerspectiveCamera, Environment, ContactShadows } from '@react-three/drei';
+import { useRef } from 'react';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { PerspectiveCamera, Environment, ContactShadows, Float } from '@react-three/drei';
 import { motion } from 'framer-motion';
 import { MedicalCross, Capsule, DnaHelix } from './3d/MedicalObjects';
+import * as THREE from 'three';
+
+const MovingLight = () => {
+    const lightRef = useRef<THREE.PointLight>(null);
+    const lightRef2 = useRef<THREE.PointLight>(null);
+
+    useFrame((state) => {
+        const time = state.clock.getElapsedTime();
+        if (lightRef.current) {
+            // Moves in a figure-8 pattern
+            lightRef.current.position.x = Math.sin(time * 0.5) * 5;
+            lightRef.current.position.y = Math.cos(time * 0.3) * 5;
+            lightRef.current.position.z = Math.sin(time * 0.4) * 5 + 5;
+        }
+        if (lightRef2.current) {
+            // Secondary light moves opposite
+            lightRef2.current.position.x = Math.cos(time * 0.4) * 6;
+            lightRef2.current.position.z = Math.sin(time * 0.6) * 4;
+        }
+    });
+
+    return (
+        <>
+            <pointLight ref={lightRef} intensity={20} color="#6366f1" distance={15} decay={2} />
+            <pointLight ref={lightRef2} intensity={15} color="#10b981" distance={15} decay={2} />
+        </>
+    );
+};
 
 const Hero = () => {
     return (
         <section id="home" className="relative min-h-screen pt-20 flex items-center bg-gradient-to-b from-slate-50 to-white overflow-hidden">
             <div className="absolute inset-0 z-0">
-                <Canvas>
-                    <PerspectiveCamera makeDefault position={[0, 0, 12]} fov={45} />
-                    <ambientLight intensity={0.5} />
-                    <directionalLight position={[10, 10, 10]} intensity={1} />
-                    <Environment preset="city" />
+                <Canvas shadows gl={{ antialias: true, toneMapping: THREE.ACESFilmicToneMapping }}>
+                    <PerspectiveCamera makeDefault position={[0, 0, 14]} fov={45} />
+                    <ambientLight intensity={0.4} />
+                    <MovingLight />
+                    <Environment preset="city" blur={0.8} />
 
-                    <MedicalCross position={[4, 1, -2]} rotation={[0.2, 0.5, 0]} scale={0.8} />
-                    <Capsule position={[-4, 2, -3]} rotation={[0.5, 0.2, 0.5]} scale={0.7} />
-                    <DnaHelix position={[5, -2, -5]} rotation={[0, 0, 0.2]} scale={0.8} />
-                    {/* Add more floating particles or smaller elements here */}
+                    <Float speed={2} rotationIntensity={0.5} floatIntensity={0.5}>
+                        <MedicalCross position={[5, 1, -2]} rotation={[0.2, 0.5, 0]} scale={0.9} />
+                    </Float>
 
-                    <ContactShadows position={[0, -4, 0]} opacity={0.4} scale={20} blur={2} far={4} />
+                    <Float speed={1.5} rotationIntensity={0.4} floatIntensity={0.8}>
+                        <Capsule position={[-5, 3, -4]} rotation={[0.5, 0.2, 0.5]} scale={0.8} />
+                    </Float>
+
+                    <Float speed={1} rotationIntensity={0.2} floatIntensity={0.4}>
+                        <DnaHelix position={[6, -3, -6]} rotation={[0, 0, 0.2]} scale={1} />
+                    </Float>
+
+                    {/* Additional background elements for depth */}
+                    <Float speed={1} rotationIntensity={0.2} floatIntensity={0.2}>
+                        <mesh position={[-6, -4, -8]} rotation={[1, 1, 0]}>
+                            <torusGeometry args={[1, 0.2, 16, 32]} />
+                            <meshStandardMaterial color="#818cf8" transparent opacity={0.3} roughness={0} metalness={0.5} />
+                        </mesh>
+                    </Float>
+
+                    <ContactShadows position={[0, -5, 0]} opacity={0.4} scale={30} blur={2.5} far={4} color="#1e1b4b" />
                 </Canvas>
             </div>
 
