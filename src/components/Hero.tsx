@@ -1,4 +1,7 @@
 import { motion } from 'framer-motion';
+import heroImg from '../assets/hero.png';
+import avatar1 from '../assets/avatar1.png';
+import avatar2 from '../assets/avatar2.png';
 
 const Hero = () => {
     return (
@@ -10,9 +13,9 @@ const Hero = () => {
                     {/* User Avatars / Social Proof */}
                     <div className="flex items-center gap-3 mb-8">
                         <div className="flex -space-x-3">
-                            <img className="w-10 h-10 rounded-full border-2 border-white object-cover" src="/assets/avatar1.png" alt="User" />
-                            <img className="w-10 h-10 rounded-full border-2 border-white object-cover" src="/assets/avatar2.png" alt="User" />
-                            <img className="w-10 h-10 rounded-full border-2 border-white object-cover" src="/assets/avatar1.png" alt="User" />
+                            <img className="w-10 h-10 rounded-full border-2 border-white object-cover" src={avatar1} alt="User" />
+                            <img className="w-10 h-10 rounded-full border-2 border-white object-cover" src={avatar2} alt="User" />
+                            <img className="w-10 h-10 rounded-full border-2 border-white object-cover" src={avatar1} alt="User" />
                         </div>
                         <div className="text-sm font-semibold text-slate-900">
                             12k+ <span className="font-normal text-slate-500">Happy Patients</span>
@@ -64,7 +67,7 @@ const Hero = () => {
 
                     {/* Main Image */}
                     <img
-                        src="/assets/hero.png"
+                        src={heroImg}
                         alt="Dr. Sarah"
                         className="relative z-10 w-[90%] object-cover object-top h-[90%]"
                     />

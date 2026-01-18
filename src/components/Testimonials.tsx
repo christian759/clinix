@@ -1,17 +1,19 @@
 import { useState } from 'react';
+import womanImg from '../assets/woman.png';
+import manImg from '../assets/man.png';
 
 const testimonials = [
     {
         name: 'Milana Katerin',
         role: 'Marketing',
         quote: "Working with Clinix was a pleasure. Their team was professional and our project went better than planned.",
-        image: '/assets/woman.png',
+        image: womanImg,
     },
     {
         name: 'Michael Jordan',
         role: 'Designer',
         quote: "The personalized care plans helped me recover 2x faster than expected.",
-        image: '/assets/man.png',
+        image: manImg,
     },
 ];
 

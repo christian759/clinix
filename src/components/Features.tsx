@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import machineImg from '../assets/machine.png';
 
 const Features = () => {
     return (
@@ -11,7 +12,7 @@ const Features = () => {
                     <div className="bg-[#D1FAE5] rounded-[3rem] p-12 relative overflow-hidden h-[500px] flex items-center justify-center">
                         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/40 via-transparent to-transparent"></div>
                         <img
-                            src="/assets/machine.png"
+                            src={machineImg}
                             alt="Medical Machine"
                             className="relative z-10 w-[80%] drop-shadow-2xl mix-blend-multiply"
                         />
