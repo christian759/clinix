@@ -1,0 +1,342 @@
+/* Additional 3D and Glassmorphism Enhancements */
+
+/* Animated gradient background for sections */
+.about-section {
+    background: linear-gradient(135deg, rgba(227, 242, 253, 0.5) 0%, rgba(187, 222, 251, 0.5) 100%);
+    position: relative;
+}
+
+.about-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        radial-gradient(circle at 10% 20%, rgba(30, 136, 229, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 90% 80%, rgba(40, 167, 69, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+/* Enhanced glassmorphism for forms */
+.appointment-form,
+.contact-form {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(10, 77, 140, 0.2),
+        0 0 0 1px rgba(30, 136, 229, 0.1);
+}
+
+.appointment-info {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(10, 77, 140, 0.2);
+}
+
+/* Floating animation for service icons */
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.service-icon {
+    animation: float 3s ease-in-out infinite;
+}
+
+.service-card:nth-child(1) .service-icon {
+    animation-delay: 0s;
+}
+
+.service-card:nth-child(2) .service-icon {
+    animation-delay: 0.2s;
+}
+
+.service-card:nth-child(3) .service-icon {
+    animation-delay: 0.4s;
+}
+
+.service-card:nth-child(4) .service-icon {
+    animation-delay: 0.6s;
+}
+
+.service-card:nth-child(5) .service-icon {
+    animation-delay: 0.8s;
+}
+
+.service-card:nth-child(6) .service-icon {
+    animation-delay: 1s;
+}
+
+/* Glowing effect for buttons */
+.btn-primary {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s;
+}
+
+.btn-primary:hover::before {
+    left: 100%;
+}
+
+/* Enhanced contact cards */
+.contact-card {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(10, 77, 140, 0.15);
+}
+
+.contact-card:hover {
+    background: rgba(255, 255, 255, 0.95);
+    border-color: rgba(30, 136, 229, 0.3);
+}
+
+/* Stat numbers glow effect */
+.stat-number {
+    position: relative;
+    text-shadow: 0 0 20px rgba(30, 136, 229, 0.3);
+}
+
+/* Enhanced navigation glass effect */
+.navbar {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+}
+
+/* Gradient text for section labels */
+.section-label {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+}
+
+/* Shimmer effect for doctor images */
+.doctor-image-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s;
+    z-index: 1;
+}
+
+.doctor-card:hover .doctor-image-wrapper::before {
+    left: 100%;
+}
+
+.doctor-image-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Pulsing animation for CTA buttons */
+@keyframes pulse-glow {
+
+    0%,
+    100% {
+        box-shadow: 0 4px 12px rgba(10, 77, 140, 0.3);
+    }
+
+    50% {
+        box-shadow: 0 4px 20px rgba(10, 77, 140, 0.6),
+            0 0 30px rgba(30, 136, 229, 0.3);
+    }
+}
+
+.hero-cta .btn-primary {
+    animation: pulse-glow 3s ease-in-out infinite;
+}
+
+/* Scrollbar styling for modern look */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-off-white);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+    border-radius: var(--radius-full);
+    border: 2px solid var(--color-off-white);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+}
+
+/* Form inputs with modern glass effect */
+.form-input {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 2px solid rgba(30, 136, 229, 0.1);
+}
+
+.form-input:focus {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 4px rgba(10, 77, 140, 0.1),
+        0 4px 20px rgba(30, 136, 229, 0.2);
+}
+
+/* Add glow to testimonial stars */
+.star-icon {
+    filter: drop-shadow(0 0 3px rgba(255, 193, 7, 0.5));
+}
+
+/* Smooth reveal animation */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.reveal.active {
+    animation: fadeInScale 0.6s ease-out;
+}
+
+/* Hero overlay enhancement */
+.hero-overlay {
+    background: linear-gradient(to bottom,
+            transparent 0%,
+            rgba(0, 0, 0, 0.1) 50%,
+            rgba(10, 25, 41, 0.3) 100%);
+}
+
+/* Footer with subtle gradient */
+.footer {
+    background: linear-gradient(135deg, #1A1A2E 0%, #16213E 50%, #0F3460 100%);
+    position: relative;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(30, 136, 229, 0.5), transparent);
+}
+
+/* Neon glow effect for special elements */
+.glow-effect {
+    text-shadow: 0 0 10px rgba(30, 136, 229, 0.5),
+        0 0 20px rgba(30, 136, 229, 0.3),
+        0 0 30px rgba(30, 136, 229, 0.2);
+}
+
+/* Interactive hover states with depth */
+.service-card,
+.doctor-card,
+.testimonial-card {
+    will-change: transform;
+}
+
+/* Loading animation for images */
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+.loading {
+    animation: shimmer 2s infinite linear;
+    background: linear-gradient(to right,
+            #f0f0f0 0%,
+            #e0e0e0 20%,
+            #f0f0f0 40%,
+            #f0f0f0 100%);
+    background-size: 1000px 100%;
+}
+
+/* Add depth to section headers */
+.section-title {
+    background: linear-gradient(135deg, var(--color-darkest) 0%, var(--color-primary-dark) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Mobile - Reduce 3D effects for performance */
+@media (max-width: 767px) {
+
+    .service-card,
+    .doctor-card,
+    .testimonial-card {
+        transform-style: flat !important;
+    }
+
+    .service-card:hover,
+    .doctor-card:hover,
+    .testimonial-card:hover {
+        transform: translateY(-5px) !important;
+    }
+
+    #hero-3d-canvas {
+        opacity: 0.5;
+    }
+}
+
+/* Accessibility - Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .service-icon {
+        animation: none !important;
+    }
+
+    #hero-3d-canvas {
+        display: none;
+    }
+}
