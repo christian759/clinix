@@ -35,17 +35,17 @@ const Services = () => {
                     </h2>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {services.map((service, index) => (
                         <div
                             key={index}
-                            className={`${service.bg} rounded-[2.5rem] p-10 flex flex-col justify-between min-h-[350px] transition-all duration-300 ${service.shadow} hover:-translate-y-1`}
+                            className={`${service.bg} rounded-[2.5rem] p-10 flex flex-col justify-between min-h-[200px] transition-all duration-300 ${service.shadow} hover:-translate-y-1`}
                         >
                             <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-lg shadow-sm mb-8 text-dark">
                                 {service.icon}
                             </div>
                             <div>
-                                <h3 className="text-2xl font-bold text-dark font-display mb-4 leading-tight">{service.title}</h3>
+                                <h3 className="text-4xl font-bold text-dark font-display mb-2 leading-tight">{service.title}</h3>
                                 <p className="text-slate-500 leading-relaxed text-sm">
                                     {service.desc}
                                 </p>
