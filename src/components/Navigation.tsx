@@ -18,7 +18,7 @@ const Navigation = () => {
 
                 {/* Center Pills (Desktop) */}
                 <div className="hidden md:flex items-center bg-white/50 backdrop-blur-md rounded-full px-2 py-1.5 border border-slate-100 shadow-sm">
-                    {['Features', 'Solutions', 'Pricing', 'Resources'].map((item) => (
+                    {['Services', 'Features', 'Testimonials', 'Booking'].map((item) => (
                         <a
                             key={item}
                             href={`#${item.toLowerCase()}`}

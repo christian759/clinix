@@ -3,7 +3,7 @@ import machineImg from '../assets/machine.png';
 
 const Features = () => {
     return (
-        <section className="py-24 bg-white relative overflow-hidden">
+        <section id="features" className="py-24 bg-white relative overflow-hidden">
             <div className="max-w-[1400px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
                 {/* Left: Machine + Square Cards */}
