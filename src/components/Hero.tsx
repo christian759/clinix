@@ -1,146 +1,104 @@
 import { useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { PerspectiveCamera, Environment, ContactShadows, Float, Stars, MeshTransmissionMaterial } from '@react-three/drei';
+import { PerspectiveCamera, Environment, ContactShadows, Float, Stars } from '@react-three/drei';
 import { motion } from 'framer-motion';
-import { MedicalCross, Capsule, DnaHelix } from './3d/MedicalObjects';
+import { MedicalCore } from './3d/MedicalCore';
 import * as THREE from 'three';
 
-const MovingLight = () => {
-    const lightRef = useRef<THREE.PointLight>(null);
-    const lightRef2 = useRef<THREE.PointLight>(null);
+const InteractiveLights = () => {
+    const mainLight = useRef<THREE.DirectionalLight>(null);
+    const fillLight = useRef<THREE.PointLight>(null);
 
     useFrame((state) => {
-        const time = state.clock.getElapsedTime();
-        if (lightRef.current) {
-            // Moves in a figure-8 pattern
-            lightRef.current.position.x = Math.sin(time * 0.5) * 5;
-            lightRef.current.position.y = Math.cos(time * 0.3) * 5;
-            lightRef.current.position.z = Math.sin(time * 0.4) * 5 + 5;
+        if (mainLight.current) {
+            // Light follows mouse position for dynamic shadows
+            // state.pointer.x/y are normalized coordinates (-1 to 1)
+            mainLight.current.position.x = state.pointer.x * 20;
+            mainLight.current.position.y = state.pointer.y * 20;
+            mainLight.current.position.z = 10;
         }
-        if (lightRef2.current) {
-            // Secondary light moves opposite
-            lightRef2.current.position.x = Math.cos(time * 0.4) * 6;
-            lightRef2.current.position.z = Math.sin(time * 0.6) * 4;
+        if (fillLight.current) {
+            fillLight.current.intensity = 2 + Math.sin(state.clock.getElapsedTime()) * 0.5;
         }
     });
 
     return (
         <>
-            <pointLight ref={lightRef} intensity={20} color="#6366f1" distance={15} decay={2} />
-            <pointLight ref={lightRef2} intensity={15} color="#10b981" distance={15} decay={2} />
+            <directionalLight
+                ref={mainLight}
+                castShadow
+                intensity={5}
+                color="#ffffff"
+                shadow-bias={-0.0001}
+            />
+            <pointLight
+                ref={fillLight}
+                position={[-10, 0, 10]}
+                intensity={2}
+                color="#818cf8"
+            />
+            <ambientLight intensity={0.5} />
         </>
     );
 };
 
 const Hero = () => {
     return (
-        <section id="home" className="relative min-h-screen pt-20 flex items-center bg-gradient-to-b from-slate-50 to-white overflow-hidden">
+        <section id="home" className="relative min-h-screen flex items-center bg-[#F8FAFC] overflow-hidden">
+            {/* 3D Scene Background - Occupies full screen but model is centered/offset */}
             <div className="absolute inset-0 z-0">
-                <Canvas shadows gl={{ antialias: true, toneMapping: THREE.ACESFilmicToneMapping, toneMappingExposure: 1.2 }}>
-                    <PerspectiveCamera makeDefault position={[0, 0, 14]} fov={35} /> {/* Lower FOV for more cinematic look */}
-                    <ambientLight intensity={0.2} />
-                    <MovingLight />
-                    <Environment preset="studio" /> {/* Studio preset better for glass/tech materials */}
+                <Canvas shadows gl={{ antialias: true, toneMapping: THREE.ReinhardToneMapping, toneMappingExposure: 1.5 }}>
+                    <PerspectiveCamera makeDefault position={[0, 0, 18]} fov={30} />
+                    <InteractiveLights />
+                    <Environment preset="studio" />
 
-                    {/* Floating Particles for Depth */}
-                    <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />
-
-                    <Float speed={2} rotationIntensity={0.5} floatIntensity={0.5}>
-                        <MedicalCross position={[4.5, 1.5, -2]} rotation={[0.2, -0.3, 0]} scale={0.8} />
+                    <Float speed={1.5} rotationIntensity={0.2} floatIntensity={0.5}>
+                        <MedicalCore position={[3, 0, 0]} scale={1.8} />
                     </Float>
 
-                    <Float speed={1.5} rotationIntensity={0.4} floatIntensity={0.8}>
-                        <Capsule position={[-5, 2, -4]} rotation={[0.5, 0.2, 0.5]} scale={0.7} />
-                    </Float>
-
-                    <Float speed={1} rotationIntensity={0.2} floatIntensity={0.4}>
-                        <DnaHelix position={[5, -3, -5]} rotation={[0, 0, 0.3]} scale={0.9} />
-                    </Float>
-
-                    {/* Background abstract shapes */}
-                    <Float speed={0.8} rotationIntensity={0.2} floatIntensity={0.2}>
-                        <mesh position={[-6, -4, -10]} rotation={[1, 1, 0]}>
-                            <torusKnotGeometry args={[1.5, 0.4, 128, 16]} />
-                            <MeshTransmissionMaterial
-                                roughness={0.1}
-                                thickness={0.5}
-                                transmission={1}
-                                chromaticAberration={0.1}
-                                color="#a5b4fc"
-                            />
-                        </mesh>
-                    </Float>
-
-                    <ContactShadows position={[0, -5, 0]} opacity={0.4} scale={30} blur={2.5} far={4} color="#1e1b4b" />
+                    {/* Background Particles Soft */}
+                    <Stars radius={100} depth={50} count={2000} factor={4} saturation={0} fade speed={1} />
+                    <ContactShadows opacity={0.4} scale={40} blur={2.5} far={10} color="#1e1b4b" />
                 </Canvas>
             </div>
 
-            <div className="relative z-10 max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* UI Content Layer - Minimalist Aesthetic */}
+            <div className="relative z-10 w-full max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center pointer-events-none">
+                {/* Pointer events none on container so mouse can interact with 3D scene behind text if needed, 
+                    but text elements need pointer-events-auto */}
                 <motion.div
-                    initial={{ opacity: 0, x: -50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.8 }}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    className="pointer-events-auto"
                 >
-                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-50 border border-indigo-100 rounded-full mb-6">
-                        <span className="w-2 h-2 rounded-full bg-indigo-600 animate-pulse"></span>
-                        <span className="text-indigo-700 font-semibold text-sm tracking-wide uppercase">Trusted by 50k+ Patients</span>
+                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-white border border-slate-200 rounded-full mb-8 shadow-sm">
+                        <span className="w-1.5 h-1.5 rounded-full bg-indigo-600 animate-pulse"></span>
+                        <span className="text-slate-500 font-medium text-xs tracking-widest uppercase">Next Gen Healthcare</span>
                     </div>
 
-                    <h1 className="text-5xl lg:text-7xl font-bold font-['Poppins'] text-slate-900 leading-[1.1] mb-6">
-                        Healthcare <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">Reimagined</span>
+                    <h1 className="text-6xl lg:text-8xl font-bold font-['Inter'] text-slate-900 tracking-tight leading-[1.05] mb-8">
+                        Future <br />
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-500">Clinic</span>
                     </h1>
 
-                    <p className="text-lg text-slate-600 mb-8 max-w-lg leading-relaxed">
-                        Experience the future of medicine with our cutting-edge facilities and world-class specialists. fast, reliable, and personalized for you.
+                    <p className="text-xl text-slate-500 mb-10 max-w-lg font-light leading-relaxed">
+                        Advanced diagnostics powered by AI and nanotechnology.
+                        Experience the precision of tomorrow, today.
                     </p>
 
-                    <div className="flex flex-wrap gap-4">
-                        <button className="px-8 py-4 bg-indigo-600 text-white rounded-2xl font-semibold text-lg hover:bg-indigo-700 hover:scale-105 transition-all shadow-xl shadow-indigo-200">
-                            Schedule Visit
+                    <div className="flex flex-wrap gap-5">
+                        <button className="px-8 py-4 bg-slate-900 text-white rounded-full font-medium text-lg hover:bg-indigo-600 hover:scale-105 transition-all shadow-xl shadow-slate-200 cursor-pointer">
+                            Book Consulation
                         </button>
-                        <button className="px-8 py-4 bg-white text-slate-700 border-2 border-slate-200 rounded-2xl font-semibold text-lg hover:border-indigo-600 hover:text-indigo-600 transition-all">
-                            View Services
+                        <button className="w-14 h-14 rounded-full border border-slate-200 flex items-center justify-center hover:border-indigo-600 hover:text-indigo-600 transition-all bg-white cursor-pointer">
+                            <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                         </button>
-                    </div>
-
-                    <div className="mt-12 flex items-center gap-8">
-                        <div>
-                            <h3 className="text-3xl font-bold text-slate-900">15k+</h3>
-                            <p className="text-slate-500 font-medium">Happy Patients</p>
-                        </div>
-                        <div className="w-px h-12 bg-slate-200"></div>
-                        <div>
-                            <h3 className="text-3xl font-bold text-slate-900">4.9/5</h3>
-                            <p className="text-slate-500 font-medium">Average Rating</p>
-                        </div>
                     </div>
                 </motion.div>
 
-                {/* The right side is open for the 3D scene to be visible, but we can add some floating Glassmorphism cards */}
-                <div className="hidden lg:block relative h-[600px] pointer-events-none">
-                    {/* 3D Canvas covers the background, so this div just reserves space in the grid */}
-                    {/* We can overlay some UI cards here that look like they are floating */}
-                </div>
+                {/* Right side left empty for the Medical Core to occupy visual space */}
             </div>
-
-            {/* Floating UI Cards interacting with 3D space */}
-            <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5, duration: 0.8 }}
-                className="absolute right-[10%] top-[30%] bg-white/80 backdrop-blur-xl p-4 rounded-2xl shadow-xl border border-white/50 hidden lg:block"
-            >
-                <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600">
-                        <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                    </div>
-                    <div>
-                        <p className="text-xs text-slate-500 font-semibold">Status</p>
-                        <p className="text-sm font-bold text-slate-800">Available Now</p>
-                    </div>
-                </div>
-            </motion.div>
         </section>
     );
 };
