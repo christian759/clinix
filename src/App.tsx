@@ -22,11 +22,14 @@ import Settings from './pages/dashboard/Settings';
 import { About, Contact, Privacy, Terms, Careers, Pricing, Integrations } from './pages/FooterPages';
 
 
+import ScrollToTop from './components/ScrollToTop';
+
 function App() {
   return (
     <AuthProvider>
       <DataProvider>
         <Router>
+          <ScrollToTop />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
