@@ -11,31 +11,36 @@ export default {
                 'display': ['Manrope', 'sans-serif'],
             },
             colors: {
-                // Strict Palette
+                // Kyealta Reference Palette
                 primary: {
-                    DEFAULT: '#2563EB', // Royal Blue (Klein-ish)
-                    600: '#1D4ED8',
+                    DEFAULT: '#34D399', // Mint Green (Primary Accent)
+                    50: '#ECFDF5', // Light Mint Background
+                    100: '#D1FAE5',
+                    200: '#A7F3D0',
+                    300: '#6EE7B7',
+                    400: '#34D399',
+                    500: '#10B981', // Emerald
+                    600: '#059669',
+                    900: '#064E3B',
                 },
-                slate: {
-                    50: '#F8FAFC',
-                    100: '#F1F5F9',
-                    200: '#E2E8F0',
-                    300: '#CBD5E1',
-                    400: '#94A3B8',
-                    500: '#64748B',
-                    600: '#475569',
-                    700: '#334155',
-                    800: '#1E293B',
-                    900: '#0F172A', // Main Text
+                accent: {
+                    purple: '#E0E7FF', // For pastel cards
+                    blue: '#E0F2FE',   // For pastel cards
+                    yellow: '#FEF3C7', // For pastel cards
                 },
-            },
-            boxShadow: {
-                'swiss': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
-                'swiss-lg': '0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025)',
+                dark: {
+                    DEFAULT: '#050505', // Almost Black
+                    Surface: '#121212',
+                },
             },
             borderRadius: {
-                '2xl': '1rem',
                 '3xl': '1.5rem',
+                '4xl': '2.5rem',
+                'blob': '3rem', // For the hero container
+            },
+            boxShadow: {
+                'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.07)',
+                'soft': '0 20px 40px -10px rgba(0, 0, 0, 0.05)',
             }
         },
     },

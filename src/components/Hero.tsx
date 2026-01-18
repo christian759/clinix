@@ -2,47 +2,111 @@ import { motion } from 'framer-motion';
 
 const Hero = () => {
     return (
-        <section id="home" className="relative min-h-screen flex items-center justify-center bg-white">
-            <div className="w-full max-w-[1400px] mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <section className="relative pt-8 pb-20 bg-white overflow-hidden">
+            <div className="max-w-[1400px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
-                {/* Left: Typography */}
-                <div className="lg:col-span-7 pt-20 lg:pt-0">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, ease: "easeOut" }}
-                    >
-                        <span className="block text-primary font-bold tracking-widest uppercase text-xs mb-6">
-                            Est. 2026 — New York / London / Tokyo
-                        </span>
-
-                        <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold font-display text-slate-900 tracking-tighter leading-[0.9] mb-8">
-                            Precision <br />
-                            Medicine.
-                        </h1>
-
-                        <p className="text-xl md:text-2xl text-slate-500 max-w-xl font-light leading-relaxed mb-10">
-                            We combine advanced diagnostic technology with personalized care to extend human longevity.
-                        </p>
-
-                        <div className="flex flex-col sm:flex-row items-center gap-4">
-                            <button onClick={() => document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' })} className="w-full sm:w-auto px-8 py-4 bg-primary text-white rounded-lg font-semibold text-lg hover:bg-primary-600 transition-colors">
-                                Book Consultation
-                            </button>
-                            <button onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })} className="w-full sm:w-auto px-8 py-4 bg-slate-50 text-slate-900 border border-slate-200 rounded-lg font-semibold text-lg hover:bg-slate-100 transition-colors">
-                                Our Services
-                            </button>
+                {/* Left: Text Content */}
+                <div className="pt-10 lg:pt-0">
+                    {/* User Avatars / Social Proof */}
+                    <div className="flex items-center gap-3 mb-8">
+                        <div className="flex -space-x-3">
+                            <img className="w-10 h-10 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" alt="User" />
+                            <img className="w-10 h-10 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=100&q=80" alt="User" />
+                            <img className="w-10 h-10 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" alt="User" />
                         </div>
-                    </motion.div>
+                        <div className="text-sm font-semibold text-slate-900">
+                            12k+ <span className="font-normal text-slate-500">Happy Patients</span>
+                        </div>
+                    </div>
+
+                    <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold font-display text-dark tracking-tight leading-[1.1] mb-8">
+                        Defending Your Future <br />
+                        with Proven Medical <br />
+                        <span className="text-primary-500">Powerhealth</span>
+                    </h1>
+
+                    <p className="text-lg text-slate-500 mb-10 max-w-lg leading-relaxed">
+                        We offer a comprehensive suite of digital health tools,
+                        expert consultations, and personalized care plans.
+                    </p>
+
+                    <div className="flex items-center gap-4 mb-20">
+                        <button onClick={() => document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' })} className="px-8 py-4 bg-dark text-white rounded-full font-semibold hover:bg-slate-800 transition-all shadow-lg shadow-dark/20 flex items-center gap-2">
+                            Get Started
+                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                        </button>
+                        <button onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })} className="px-8 py-4 bg-white text-slate-900 border border-slate-200 rounded-full font-semibold hover:bg-slate-50 transition-all">
+                            View Services
+                        </button>
+                    </div>
+
+                    {/* Stats Row */}
+                    <div className="grid grid-cols-3 gap-8 pt-8 border-t border-slate-100">
+                        <div>
+                            <h3 className="text-3xl font-bold text-dark font-display">+5K</h3>
+                            <p className="text-sm text-slate-400">Total Patients</p>
+                        </div>
+                        <div>
+                            <h3 className="text-3xl font-bold text-dark font-display">10+</h3>
+                            <p className="text-sm text-slate-400">Years Experience</p>
+                        </div>
+                        <div>
+                            <h3 className="text-3xl font-bold text-dark font-display">96%</h3>
+                            <p className="text-sm text-slate-400">Success Rate</p>
+                        </div>
+                    </div>
                 </div>
 
-                {/* Right: Abstract Visualization (Clean) */}
-                <div className="lg:col-span-5 relative hidden lg:block h-[600px] bg-slate-50 rounded-2xl overflow-hidden">
+                {/* Right: The "Doctor in Blob" */}
+                <div className="relative h-[700px] w-full bg-[#9BF6D3] rounded-[3rem] overflow-hidden flex items-end justify-center">
+                    {/* Background Pattern */}
+                    <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white via-transparent to-transparent"></div>
+
+                    {/* Main Image */}
                     <img
-                        src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?auto=format&fit=crop&q=80&w=1200"
-                        alt="Minimal Medical"
-                        className="w-full h-full object-cover grayscale opacity-80 hover:grayscale-0 transition-all duration-700"
+                        src="https://images.unsplash.com/photo-1559839734-2b71ea86b48e?auto=format&fit=crop&w=800&q=80"
+                        alt="Dr. Sarah"
+                        className="relative z-10 w-[90%] object-cover object-top h-[90%]" // Ensuring she stands "in" the box
                     />
+
+                    {/* Floating Glass Cards */}
+                    {/* Top Left: Heart Rate */}
+                    <motion.div
+                        initial={{ y: 20, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ delay: 0.5 }}
+                        className="absolute top-24 left-8 z-20 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-glass flex items-center gap-3 pr-8"
+                    >
+                        <div className="w-10 h-10 bg-rose-100 rounded-full flex items-center justify-center text-rose-500">
+                            ❤️
+                        </div>
+                        <div>
+                            <p className="text-xs text-slate-500 font-semibold">Heart Rate</p>
+                            <p className="text-lg font-bold text-dark">98 bpm</p>
+                        </div>
+                    </motion.div>
+
+                    {/* Bottom Right: Users Active */}
+                    <motion.div
+                        initial={{ x: 20, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        transition={{ delay: 0.7 }}
+                        className="absolute bottom-32 right-8 z-20 bg-white/90 backdrop-blur-md p-6 rounded-2xl shadow-glass max-w-[200px]"
+                    >
+                        <div className="flex justify-between items-center mb-2">
+                            <div className="w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center text-primary-600">
+                                ⚡
+                            </div>
+                            <span className="text-xs font-bold text-slate-400">Active</span>
+                        </div>
+                        <p className="text-2xl font-bold text-dark">120/80</p>
+                        <p className="text-xs text-slate-400">Blood Pressure</p>
+
+                        {/* Mini Graph */}
+                        <div className="mt-2 h-1 w-full bg-slate-100 rounded-full overflow-hidden">
+                            <div className="h-full w-[70%] bg-primary-500 rounded-full"></div>
+                        </div>
+                    </motion.div>
                 </div>
             </div>
         </section>
