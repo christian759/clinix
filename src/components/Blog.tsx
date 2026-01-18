@@ -5,7 +5,7 @@ const posts = [
         title: "The Future of Non-Invasive Surgery",
         category: "Technology",
         date: "March 15, 2026",
-        image: "https://images.unsplash.com/photo-1579165466741-7f35a4755657?auto=format&fit=crop&q=80&w=800",
+        image: "https://images.unsplash.com/photo-1551601651-2a8555f1a136?auto=format&fit=crop&q=80&w=800",
         excerpt: "How nanobots are replacing traditional scalpels in modern operating rooms."
     },
     {

@@ -6,12 +6,22 @@ export default {
     ],
     theme: {
         extend: {
-            backgroundImage: {
-                'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-            },
             fontFamily: {
                 'sans': ['Inter', 'sans-serif'],
-                'poppins': ['Poppins', 'sans-serif'],
+                'display': ['Manrope', 'sans-serif'],
+            },
+            colors: {
+                slate: {
+                    850: '#1e293b', // Deep professional slate
+                    900: '#0f172a',
+                },
+                blue: {
+                    500: '#3b82f6', // Corporate blue
+                    600: '#2563eb',
+                }
+            },
+            backgroundImage: {
+                'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
             },
             animation: {
                 'float': 'float 6s ease-in-out infinite',
