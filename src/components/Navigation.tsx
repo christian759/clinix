@@ -14,8 +14,6 @@ const Navigation = () => {
             <div className="max-w-[1400px] mx-auto px-6 flex justify-between items-center">
                 {/* Logo */}
                 <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 bg-dark rounded-full flex items-center justify-center text-white font-bold">K</div>
-                    <span className="font-display font-bold text-xl text-dark">Kyealta</span>
                 </div>
 
                 {/* Center Pills (Desktop) */}

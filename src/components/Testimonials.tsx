@@ -5,13 +5,13 @@ const testimonials = [
         name: 'Milana Katerin',
         role: 'Marketing',
         quote: "Working with Clinix was a pleasure. Their team was professional and our project went better than planned.",
-        image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=600',
+        image: '/assets/woman.png',
     },
     {
         name: 'Michael Jordan',
         role: 'Designer',
         quote: "The personalized care plans helped me recover 2x faster than expected.",
-        image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=600',
+        image: '/assets/man.png',
     },
 ];
 
@@ -33,7 +33,7 @@ const Testimonials = () => {
                     </p>
 
                     <div className="flex items-center gap-4">
-                        <img src={testimonials[0].image} className="w-12 h-12 rounded-full object-cover" alt="User" />
+                        <img src={testimonials[0].image} className="w-12 h-12 rounded-full object-cover shadow-sm" alt="User" />
                         <div>
                             <h4 className="font-bold text-dark">{testimonials[0].name}</h4>
                             <p className="text-slate-500 text-sm">{testimonials[0].role}</p>

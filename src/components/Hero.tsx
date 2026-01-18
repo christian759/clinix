@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 const Hero = () => {
     return (
-        <section className="relative pt-8 pb-20 bg-white overflow-hidden">
+        <section className="relative pt-40 pb-20 bg-white overflow-hidden">
             <div className="max-w-[1400px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
                 {/* Left: Text Content */}
@@ -10,9 +10,9 @@ const Hero = () => {
                     {/* User Avatars / Social Proof */}
                     <div className="flex items-center gap-3 mb-8">
                         <div className="flex -space-x-3">
-                            <img className="w-10 h-10 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" alt="User" />
-                            <img className="w-10 h-10 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=100&q=80" alt="User" />
-                            <img className="w-10 h-10 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" alt="User" />
+                            <img className="w-10 h-10 rounded-full border-2 border-white object-cover" src="/assets/avatar1.png" alt="User" />
+                            <img className="w-10 h-10 rounded-full border-2 border-white object-cover" src="/assets/avatar2.png" alt="User" />
+                            <img className="w-10 h-10 rounded-full border-2 border-white object-cover" src="/assets/avatar1.png" alt="User" />
                         </div>
                         <div className="text-sm font-semibold text-slate-900">
                             12k+ <span className="font-normal text-slate-500">Happy Patients</span>
@@ -64,17 +64,14 @@ const Hero = () => {
 
                     {/* Main Image */}
                     <img
-                        src="https://images.unsplash.com/photo-1559839734-2b71ea86b48e?auto=format&fit=crop&w=800&q=80"
+                        src="/assets/hero.png"
                         alt="Dr. Sarah"
-                        className="relative z-10 w-[90%] object-cover object-top h-[90%]" // Ensuring she stands "in" the box
+                        className="relative z-10 w-[90%] object-cover object-top h-[90%]"
                     />
 
                     {/* Floating Glass Cards */}
                     {/* Top Left: Heart Rate */}
-                    <motion.div
-                        initial={{ y: 20, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ delay: 0.5 }}
+                    <div
                         className="absolute top-24 left-8 z-20 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-glass flex items-center gap-3 pr-8"
                     >
                         <div className="w-10 h-10 bg-rose-100 rounded-full flex items-center justify-center text-rose-500">
@@ -84,13 +81,10 @@ const Hero = () => {
                             <p className="text-xs text-slate-500 font-semibold">Heart Rate</p>
                             <p className="text-lg font-bold text-dark">98 bpm</p>
                         </div>
-                    </motion.div>
+                    </div>
 
                     {/* Bottom Right: Users Active */}
-                    <motion.div
-                        initial={{ x: 20, opacity: 0 }}
-                        animate={{ x: 0, opacity: 1 }}
-                        transition={{ delay: 0.7 }}
+                    <div
                         className="absolute bottom-32 right-8 z-20 bg-white/90 backdrop-blur-md p-6 rounded-2xl shadow-glass max-w-[200px]"
                     >
                         <div className="flex justify-between items-center mb-2">
@@ -106,7 +100,7 @@ const Hero = () => {
                         <div className="mt-2 h-1 w-full bg-slate-100 rounded-full overflow-hidden">
                             <div className="h-full w-[70%] bg-primary-500 rounded-full"></div>
                         </div>
-                    </motion.div>
+                    </div>
                 </div>
             </div>
         </section>

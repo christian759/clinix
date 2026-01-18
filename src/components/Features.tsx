@@ -11,7 +11,7 @@ const Features = () => {
                     <div className="bg-[#D1FAE5] rounded-[3rem] p-12 relative overflow-hidden h-[500px] flex items-center justify-center">
                         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/40 via-transparent to-transparent"></div>
                         <img
-                            src="https://images.unsplash.com/photo-1516549655169-df83a06745ed?auto=format&fit=crop&w=800&q=80"
+                            src="/assets/machine.png"
                             alt="Medical Machine"
                             className="relative z-10 w-[80%] drop-shadow-2xl mix-blend-multiply"
                         />
