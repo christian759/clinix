@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { PerspectiveCamera, Environment, ContactShadows, Float } from '@react-three/drei';
+import { PerspectiveCamera, Environment, ContactShadows, Float, Stars, MeshTransmissionMaterial } from '@react-three/drei';
 import { motion } from 'framer-motion';
 import { MedicalCross, Capsule, DnaHelix } from './3d/MedicalObjects';
 import * as THREE from 'three';
@@ -36,29 +36,38 @@ const Hero = () => {
     return (
         <section id="home" className="relative min-h-screen pt-20 flex items-center bg-gradient-to-b from-slate-50 to-white overflow-hidden">
             <div className="absolute inset-0 z-0">
-                <Canvas shadows gl={{ antialias: true, toneMapping: THREE.ACESFilmicToneMapping }}>
-                    <PerspectiveCamera makeDefault position={[0, 0, 14]} fov={45} />
-                    <ambientLight intensity={0.4} />
+                <Canvas shadows gl={{ antialias: true, toneMapping: THREE.ACESFilmicToneMapping, toneMappingExposure: 1.2 }}>
+                    <PerspectiveCamera makeDefault position={[0, 0, 14]} fov={35} /> {/* Lower FOV for more cinematic look */}
+                    <ambientLight intensity={0.2} />
                     <MovingLight />
-                    <Environment preset="city" blur={0.8} />
+                    <Environment preset="studio" /> {/* Studio preset better for glass/tech materials */}
+
+                    {/* Floating Particles for Depth */}
+                    <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />
 
                     <Float speed={2} rotationIntensity={0.5} floatIntensity={0.5}>
-                        <MedicalCross position={[5, 1, -2]} rotation={[0.2, 0.5, 0]} scale={0.9} />
+                        <MedicalCross position={[4.5, 1.5, -2]} rotation={[0.2, -0.3, 0]} scale={0.8} />
                     </Float>
 
                     <Float speed={1.5} rotationIntensity={0.4} floatIntensity={0.8}>
-                        <Capsule position={[-5, 3, -4]} rotation={[0.5, 0.2, 0.5]} scale={0.8} />
+                        <Capsule position={[-5, 2, -4]} rotation={[0.5, 0.2, 0.5]} scale={0.7} />
                     </Float>
 
                     <Float speed={1} rotationIntensity={0.2} floatIntensity={0.4}>
-                        <DnaHelix position={[6, -3, -6]} rotation={[0, 0, 0.2]} scale={1} />
+                        <DnaHelix position={[5, -3, -5]} rotation={[0, 0, 0.3]} scale={0.9} />
                     </Float>
 
-                    {/* Additional background elements for depth */}
-                    <Float speed={1} rotationIntensity={0.2} floatIntensity={0.2}>
-                        <mesh position={[-6, -4, -8]} rotation={[1, 1, 0]}>
-                            <torusGeometry args={[1, 0.2, 16, 32]} />
-                            <meshStandardMaterial color="#818cf8" transparent opacity={0.3} roughness={0} metalness={0.5} />
+                    {/* Background abstract shapes */}
+                    <Float speed={0.8} rotationIntensity={0.2} floatIntensity={0.2}>
+                        <mesh position={[-6, -4, -10]} rotation={[1, 1, 0]}>
+                            <torusKnotGeometry args={[1.5, 0.4, 128, 16]} />
+                            <MeshTransmissionMaterial
+                                roughness={0.1}
+                                thickness={0.5}
+                                transmission={1}
+                                chromaticAberration={0.1}
+                                color="#a5b4fc"
+                            />
                         </mesh>
                     </Float>
 

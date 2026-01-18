@@ -1,5 +1,6 @@
 import Hero from './components/Hero'
 import Services from './components/Services'
+import Technology from './components/Technology'
 import Doctors from './components/Doctors'
 import CTA from './components/CTA'
 import Footer from './components/Footer'
@@ -12,6 +13,7 @@ function App() {
       <Navigation />
       <Hero />
       <Services />
+      <Technology />
       <Doctors />
       <CTA />
       <Footer />

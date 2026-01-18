@@ -66,9 +66,8 @@ const Doctors = () => {
                                 <h3 className="text-xl font-bold text-slate-800 mb-1">{doctor.name}</h3>
                                 <p className="text-indigo-600 font-medium">{doctor.role}</p>
 
-                                <div className="mt-6 flex justify-center gap-4 opacity-0 transform translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
-                                    {/* Social icons or action buttons could go here */}
-                                    <button className="px-6 py-2 bg-slate-900 text-white text-sm rounded-lg font-medium hover:bg-slate-800 w-full">
+                                <div className="mt-6 flex justify-center gap-4">
+                                    <button className="px-6 py-3 bg-slate-900 text-white text-sm rounded-xl font-medium hover:bg-indigo-600 transition-colors w-full shadow-lg shadow-slate-200">
                                         Book Appointment
                                     </button>
                                 </div>
