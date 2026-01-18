@@ -40,19 +40,75 @@ const Technology = () => {
                     </div>
                 </motion.div>
 
-                {/* Abstract Graphic / Image */}
+                {/* Holographic Data Visualization */}
                 <motion.div
                     initial={{ opacity: 0, scale: 0.95 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
-                    className="h-[500px] w-full bg-slate-100 rounded-3xl overflow-hidden relative shadow-inner"
+                    className="h-[600px] w-full bg-slate-50 rounded-3xl overflow-hidden relative border border-slate-200 shadow-2xl"
                 >
-                    <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-purple-500/10"></div>
-                    {/* Static visual representation instead of heavy 3D */}
-                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-white rounded-full shadow-[0_0_100px_rgba(99,102,241,0.2)] flex items-center justify-center">
-                        <div className="w-48 h-48 rounded-full border-2 border-indigo-100 flex items-center justify-center animate-pulse">
-                            <div className="w-32 h-32 rounded-full bg-indigo-50"></div>
+                    {/* Grid Background */}
+                    <div className="absolute inset-0 bg-[linear-gradient(rgba(99,102,241,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(99,102,241,0.03)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+
+                    {/* Central Scanner Interface */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="relative w-80 h-80">
+                            {/* Rotating Rings */}
+                            <motion.div
+                                animate={{ rotate: 360 }}
+                                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                                className="absolute inset-0 rounded-full border border-dashed border-indigo-200"
+                            />
+                            <motion.div
+                                animate={{ rotate: -360 }}
+                                transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                                className="absolute inset-4 rounded-full border border-indigo-100"
+                            />
+
+                            {/* Scanning Line */}
+                            <motion.div
+                                animate={{ top: ['0%', '100%', '0%'] }}
+                                transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                                className="absolute left-0 right-0 h-0.5 bg-indigo-500 shadow-[0_0_20px_rgba(99,102,241,0.8)] z-10"
+                            />
+
+                            {/* Center Data Points */}
+                            <div className="absolute inset-20 bg-white rounded-full shadow-lg flex items-center justify-center flex-col z-20">
+                                <span className="text-3xl font-bold text-slate-800">98%</span>
+                                <span className="text-xs text-slate-400 uppercase tracking-widest mt-1">Accuracy</span>
+                            </div>
+
+                            {/* Floating UI Cards around the center */}
+                            <motion.div
+                                animate={{ y: [0, -10, 0] }}
+                                transition={{ duration: 4, repeat: Infinity }}
+                                className="absolute -right-20 top-0 bg-white p-4 rounded-xl shadow-lg border border-slate-100 w-40"
+                            >
+                                <div className="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden mb-2">
+                                    <div className="h-full bg-emerald-500 w-[80%] rounded-full"></div>
+                                </div>
+                                <div className="flex justify-between text-xs text-slate-500">
+                                    <span>Vitals</span>
+                                    <span className="text-emerald-600 font-bold">Normal</span>
+                                </div>
+                            </motion.div>
+
+                            <motion.div
+                                animate={{ y: [0, 10, 0] }}
+                                transition={{ duration: 5, repeat: Infinity }}
+                                className="absolute -left-20 bottom-10 bg-white p-4 rounded-xl shadow-lg border border-slate-100 w-40"
+                            >
+                                <div className="flex items-center gap-2 mb-2">
+                                    <div className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></div>
+                                    <span className="text-xs font-bold text-slate-700">Analysis</span>
+                                </div>
+                                <div className="space-y-1">
+                                    <div className="h-1 w-[90%] bg-slate-100 rounded-full"></div>
+                                    <div className="h-1 w-[60%] bg-slate-100 rounded-full"></div>
+                                    <div className="h-1 w-[80%] bg-slate-100 rounded-full"></div>
+                                </div>
+                            </motion.div>
                         </div>
                     </div>
                 </motion.div>
