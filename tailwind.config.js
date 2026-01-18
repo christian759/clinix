@@ -11,26 +11,31 @@ export default {
                 'display': ['Manrope', 'sans-serif'],
             },
             colors: {
-                slate: {
-                    850: '#1e293b', // Deep professional slate
-                    900: '#0f172a',
+                // Strict Palette
+                primary: {
+                    DEFAULT: '#2563EB', // Royal Blue (Klein-ish)
+                    600: '#1D4ED8',
                 },
-                blue: {
-                    500: '#3b82f6', // Corporate blue
-                    600: '#2563eb',
-                }
+                slate: {
+                    50: '#F8FAFC',
+                    100: '#F1F5F9',
+                    200: '#E2E8F0',
+                    300: '#CBD5E1',
+                    400: '#94A3B8',
+                    500: '#64748B',
+                    600: '#475569',
+                    700: '#334155',
+                    800: '#1E293B',
+                    900: '#0F172A', // Main Text
+                },
             },
-            backgroundImage: {
-                'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+            boxShadow: {
+                'swiss': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+                'swiss-lg': '0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025)',
             },
-            animation: {
-                'float': 'float 6s ease-in-out infinite',
-            },
-            keyframes: {
-                float: {
-                    '0%, 100%': { transform: 'translateY(0)' },
-                    '50%': { transform: 'translateY(-20px)' },
-                }
+            borderRadius: {
+                '2xl': '1rem',
+                '3xl': '1.5rem',
             }
         },
     },

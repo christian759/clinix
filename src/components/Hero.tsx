@@ -2,46 +2,48 @@ import { motion } from 'framer-motion';
 
 const Hero = () => {
     return (
-        <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
-            {/* Soft Ambient Background */}
-            <div className="absolute top-[-20%] left-[-10%] w-[70vw] h-[70vw] bg-indigo-50/50 rounded-full blur-[120px] pointer-events-none mix-blend-multiply"></div>
-            <div className="absolute bottom-[-20%] right-[-10%] w-[70vw] h-[70vw] bg-blue-50/50 rounded-full blur-[120px] pointer-events-none mix-blend-multiply"></div>
+        <section id="home" className="relative min-h-screen flex items-center justify-center bg-white">
+            <div className="w-full max-w-[1400px] mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
 
-            {/* Text Content */}
-            <div className="relative z-10 w-full max-w-5xl mx-auto px-6 text-center">
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                >
-                    <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white border border-slate-100 rounded-full mb-8 shadow-[0_2px_10px_rgba(0,0,0,0.03)]">
-                        <span className="flex h-2 w-2 relative">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
-                            <span className="relative inline-flex rounded-full h-2 w-2 bg-sky-500"></span>
+                {/* Left: Typography */}
+                <div className="lg:col-span-7 pt-20 lg:pt-0">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
+                    >
+                        <span className="block text-primary font-bold tracking-widest uppercase text-xs mb-6">
+                            Est. 2026 — New York / London / Tokyo
                         </span>
-                        <span className="text-slate-500 font-semibold text-xs tracking-widest uppercase font-sans">Accepting New Patients</span>
-                    </div>
 
-                    <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold font-display text-slate-900 tracking-tight leading-[1.1] mb-8">
-                        Healthcare <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-500">Reimagined</span>
-                    </h1>
+                        <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold font-display text-slate-900 tracking-tighter leading-[0.9] mb-8">
+                            Precision <br />
+                            Medicine.
+                        </h1>
 
-                    <p className="text-xl md:text-2xl text-slate-500 mb-12 max-w-2xl mx-auto font-sans leading-relaxed font-light">
-                        Experience a new standard of medical excellence where
-                        <span className="text-slate-800 font-medium"> precision technology</span> meets
-                        <span className="text-slate-800 font-medium"> compassionate care</span>.
-                    </p>
+                        <p className="text-xl md:text-2xl text-slate-500 max-w-xl font-light leading-relaxed mb-10">
+                            We combine advanced diagnostic technology with personalized care to extend human longevity.
+                        </p>
 
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <button onClick={() => document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' })} className="px-10 py-5 bg-slate-900 text-white rounded-full font-semibold text-lg hover:bg-blue-600 hover:scale-105 transition-all shadow-xl shadow-blue-900/10 w-full sm:w-auto font-sans">
-                            Book Consultation
-                        </button>
-                        <button onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })} className="px-10 py-5 bg-white text-slate-600 border border-slate-200 rounded-full font-semibold text-lg hover:border-blue-200 hover:text-blue-600 hover:bg-blue-50/50 transition-all w-full sm:w-auto font-sans">
-                            Explore Services
-                        </button>
-                    </div>
-                </motion.div>
+                        <div className="flex flex-col sm:flex-row items-center gap-4">
+                            <button onClick={() => document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' })} className="w-full sm:w-auto px-8 py-4 bg-primary text-white rounded-lg font-semibold text-lg hover:bg-primary-600 transition-colors">
+                                Book Consultation
+                            </button>
+                            <button onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })} className="w-full sm:w-auto px-8 py-4 bg-slate-50 text-slate-900 border border-slate-200 rounded-lg font-semibold text-lg hover:bg-slate-100 transition-colors">
+                                Our Services
+                            </button>
+                        </div>
+                    </motion.div>
+                </div>
+
+                {/* Right: Abstract Visualization (Clean) */}
+                <div className="lg:col-span-5 relative hidden lg:block h-[600px] bg-slate-50 rounded-2xl overflow-hidden">
+                    <img
+                        src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?auto=format&fit=crop&q=80&w=1200"
+                        alt="Minimal Medical"
+                        className="w-full h-full object-cover grayscale opacity-80 hover:grayscale-0 transition-all duration-700"
+                    />
+                </div>
             </div>
         </section>
     );

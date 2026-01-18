@@ -1,41 +1,47 @@
 import { motion } from 'framer-motion';
 
 const services = [
-    { name: 'Advanced Diagnostics', icon: '🔬', desc: 'Full-body MRI & AI Scanning' },
-    { name: 'Robotic Surgery', icon: '🦾', desc: 'Minimally invasive precision procedures' },
-    { name: 'Genomic Therapy', icon: '🧬', desc: 'Personalized DNA-based treatments' },
-    { name: 'Telemedicine', icon: '📱', desc: '24/7 Virtual consultations' },
-    { name: 'Neurology', icon: '🧠', desc: 'Brain mapping & cognitive health' },
-    { name: 'Dental Care', icon: '🦷', desc: 'Cosmetic & restorative dentistry' },
+    { title: 'Advanced Diagnostics', desc: 'Full-body MRI & AI Scanning.' },
+    { title: 'Robotic Surgery', desc: 'Minimally invasive precision.' },
+    { title: 'Genomic Therapy', desc: 'Personalized DNA treatments.' },
+    { title: 'Telemedicine', desc: '24/7 Virtual consultations.' },
+    { title: 'Neurology', desc: 'Brain mapping & cognitive health.' },
+    { title: 'Dental Care', desc: 'Cosmetic & restorative dentistry.' },
 ];
 
 const Services = () => {
     return (
-        <section id="services" className="py-24 bg-white">
-            <div className="max-w-7xl mx-auto px-6">
-                <div className="text-center mb-20">
-                    <span className="text-blue-600 font-bold tracking-wider uppercase text-xs bg-blue-50 px-3 py-1 rounded-lg">Our Expertise</span>
-                    <h2 className="text-4xl font-bold font-display text-slate-900 mt-4">Clinical Excellence</h2>
-                    <p className="text-slate-500 max-w-2xl mx-auto mt-4 text-lg">Comprehensive care solutions tailored to your unique biological needs.</p>
+        <section id="services" className="py-32 bg-slate-50 border-t border-slate-100">
+            <div className="max-w-[1400px] mx-auto px-6 md:px-12">
+                <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+                    <div>
+                        <h2 className="text-4xl font-bold font-display text-slate-900 tracking-tight mb-4">Clinical Expertise</h2>
+                        <p className="text-slate-500 max-w-md text-lg">Comprehensive care modules designed for the modern patient.</p>
+                    </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
+                    {/* Zero-gap grid with borders for strict look */}
                     {services.map((service, index) => (
                         <motion.div
                             key={index}
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 0, y: 10 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: index * 0.1 }}
-                            className="bg-slate-50 p-8 rounded-2xl hover:bg-white hover:shadow-xl hover:shadow-blue-900/5 hover:-translate-y-1 transition-all duration-300 group cursor-pointer border border-transparent hover:border-blue-100"
+                            transition={{ delay: index * 0.05 }}
+                            className="bg-white p-12 hover:bg-slate-50 transition-colors border border-slate-100 -ml-[1px] -mt-[1px] group"
                         >
-                            <div className="text-4xl mb-6 bg-white w-14 h-14 rounded-xl flex items-center justify-center shadow-sm group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
-                                {service.icon}
+                            <div className="w-10 h-10 bg-primary/10 text-primary rounded-lg flex items-center justify-center mb-6">
+                                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                                </svg>
                             </div>
-                            <h3 className="text-xl font-bold text-slate-900 mb-3 font-display">{service.name}</h3>
-                            <p className="text-slate-500 leading-relaxed mb-6 group-hover:text-slate-600">{service.desc}</p>
-                            <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center text-slate-400 group-hover:bg-blue-100 group-hover:text-blue-600 transition-colors">
-                                <span className="text-lg">→</span>
+                            <h3 className="text-2xl font-bold text-slate-900 mb-3 font-display">{service.title}</h3>
+                            <p className="text-slate-500 leading-relaxed group-hover:text-slate-700 transition-colors">
+                                {service.desc}
+                            </p>
+                            <div className="mt-8 pt-8 border-t border-slate-100 opacity-0 group-hover:opacity-100 transition-opacity">
+                                <span className="text-sm font-bold text-primary uppercase tracking-wider">Learn More</span>
                             </div>
                         </motion.div>
                     ))}
